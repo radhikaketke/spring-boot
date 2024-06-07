@@ -1,0 +1,67 @@
+package com.shop.controller;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.shop.service.ShopServiceImpl;
+import com.shop.shopDto.ShopDto;
+import com.shop.shopEntity.Shop;
+
+public class ShopControllerTest {
+
+	
+	 @Autowired
+	    private MockMvc mockMvc;
+
+	 ObjectMapper objectMapper  = new ObjectMapper(); 
+	 ObjectWriter objectWriter = objectMapper.
+	 
+	    @Mock
+	    private ShopServiceImpl shopServiceImpl;
+
+	    @InjectMocks
+	    private ShopController shopController;
+
+	   
+
+	    private Shop shop;
+	    private ShopDto shopDto;
+
+	    @BeforeEach
+	    void setUp() {
+	        MockitoAnnotations.openMocks(this);
+
+	        shop = new Shop();
+	        shop.setId(1);
+	        shop.setName("Test Shop");
+
+	        shopDto = new ShopDto();
+	        shopDto.setName("Test Shop");
+	    }
+
+	    @Test
+	    void testSaveShop() throws Exception {
+	        when(shopServiceImpl.saveShop(any(ShopDto.class))).thenReturn(shop);
+
+	        mockMvc.perform(post("/shops/saveShops")
+	                .contentType(MediaType.APPLICATION_JSON)
+	                .content(objectMapper.writeValueAsString(shopDto)))
+	                .andExpect(status().isOk())
+	                .andExpect(jsonPath("$.id").value(1))
+	                .andExpect(jsonPath("$.name").value("Test Shop"));
+	    }
+}

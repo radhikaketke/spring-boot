@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="UserServiceTest" project="UserTesting" tests="2" started="2" failures="0" errors="2" ignored="0">
+  <testsuite name="com.example.demo.service.UserServiceTest" time="0.001" displayname="UserServiceTest" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.service.UserServiceTest]">
+    <testcase name="testGetUsers" classname="com.example.demo.service.UserServiceTest" time="0.001" displayname="testGetUsers()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.service.UserServiceTest]/[method:testGetUsers()]">
+      <error>java.lang.NullPointerException: Cannot invoke "com.example.demo.repository.UserRepository.deleteAll()" because "this.userRepository" is null&#13;
+	at com.example.demo.service.UserServiceTest.setUp(UserServiceTest.java:32)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="testSaveUser" classname="com.example.demo.service.UserServiceTest" time="0.0" displayname="testSaveUser()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.service.UserServiceTest]/[method:testSaveUser()]">
+      <error>java.lang.NullPointerException: Cannot invoke "com.example.demo.repository.UserRepository.deleteAll()" because "this.userRepository" is null&#13;
+	at com.example.demo.service.UserServiceTest.setUp(UserServiceTest.java:32)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

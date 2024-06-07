@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="UserServiceTest" project="UserTesting" tests="2" started="0" failures="0" errors="1" ignored="0">
+  <testsuite name="com.example.demo.service.UserServiceTest" incomplete="true" displayname="UserServiceTest" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.service.UserServiceTest]">
+    <error>java.lang.NoSuchMethodError: 'org.junit.jupiter.api.extension.ExecutableInvoker org.junit.jupiter.api.extension.ExtensionContext.getExecutableInvoker()'&#13;
+	at org.springframework.test.context.junit.jupiter.SpringExtension.registerMethodInvoker(SpringExtension.java:381)&#13;
+	at org.springframework.test.context.junit.jupiter.SpringExtension.beforeAll(SpringExtension.java:132)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	Suppressed: java.lang.NoSuchMethodError: 'org.junit.jupiter.api.extension.ExecutableInvoker org.junit.jupiter.api.extension.ExtensionContext.getExecutableInvoker()'&#13;
+		at org.springframework.test.context.junit.jupiter.SpringExtension.registerMethodInvoker(SpringExtension.java:381)&#13;
+		at org.springframework.test.context.junit.jupiter.SpringExtension.afterAll(SpringExtension.java:143)&#13;
+		at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+		... 1 more&#13;
+&#13;
+</error>
+    <testcase name="testGetUsers" classname="com.example.demo.service.UserServiceTest" incomplete="true" displayname="testGetUsers()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.service.UserServiceTest]/[method:testGetUsers()]"/>
+    <testcase name="testSaveUser" classname="com.example.demo.service.UserServiceTest" incomplete="true" displayname="testSaveUser()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.service.UserServiceTest]/[method:testSaveUser()]"/>
+  </testsuite>
+</testrun>

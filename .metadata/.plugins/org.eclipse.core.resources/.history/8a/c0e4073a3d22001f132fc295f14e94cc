@@ -1,0 +1,50 @@
+package com.shop.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.shop.repository.ShopRepository;
+import com.shop.shopDto.BrandDto;
+import com.shop.shopDto.ShopDto;
+import com.shop.shopEntity.Brand;
+import com.shop.shopEntity.Shop;
+
+@Service
+public class ShopService {
+
+	@Autowired
+	private ShopRepository shopRepository;
+	
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	 public Shop saveShop(ShopDto shopDto) {
+	        Shop shop = modelMapper.map(shopDto, Shop.class);
+	        List<Brand> brands = new ArrayList<>();
+
+	        for (Brand brandDto : shopDto.getBrand()) {
+	        	  Brand brand = modelMapper.map(brandDto, Brand.class);
+	              brand.setShop(shop);
+	              brands.add(brand);
+	        }
+	        shop.setBrands(brands);
+	        return shopRepository.save(shop);
+	    }
+	
+	public List<Shop> getShops(){
+		 return shopRepository.findAll();
+	}
+	
+	public Shop getShopById(int id) {
+		return shopRepository.findById(id).orElse(null);
+	}
+	
+	public String deleteShop(int id) {
+		 shopRepository.deleteById(id);
+		 return "data deleted successfully";
+	}
+}

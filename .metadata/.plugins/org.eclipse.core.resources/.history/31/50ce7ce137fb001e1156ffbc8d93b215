@@ -1,0 +1,89 @@
+package com.secondweb.service;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import org.springframework.stereotype.Service;
+
+import com.secondweb.dto.TeacherDto;
+import com.secondweb.dto.UserDto;
+
+@Service
+public class TeacherService {
+	
+ public String saveTeacher(TeacherDto teacherDto ) {
+	 String mssge = "";
+	 try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root","root");
+			PreparedStatement ps = con.prepareStatement("insert into teacher values(?,?,?)");
+			ps.setInt(1,teacherDto.getTeacherId());
+			ps.setString(2, teacherDto.getName());
+			ps.setString(3, teacherDto.getSubject());
+			int row = ps.executeUpdate();
+			if(row>0) {
+				mssge = "data saved successfully";
+			}
+			else {
+				mssge = "data not saved";
+			}
+			con.close();
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	 catch (SQLException ex) {
+		 ex.printStackTrace();
+	}
+	return mssge; 
+ }
+ 
+	public String deleteData(int id) {
+		String mssge = "";
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/user","root","root");
+			PreparedStatement ps = cn.prepareStatement("delete from teacher where teacherId=?");
+			ps.setInt(1,id);
+			int row = ps.executeUpdate();
+			if(row>0) {
+				mssge = "data has been deleted";
+			}
+			else {
+				mssge =  "data has not been deleted try again";
+			}
+			cn.close();			}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		return mssge;
+	}
+	
+	public String updateData(TeacherDto teacherDto) {
+		String mssge = "";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/user", "root", "root");
+            PreparedStatement ps = cn.prepareStatement("update user set name = ? where teacherId=?");
+            ps.setString(1, teacherDto.getName());
+            ps.setInt(2, teacherDto.getTeacherId());
+            int row = ps.executeUpdate();
+            if (row > 0) {
+                mssge = "data has been updated successfully";
+            } else {
+                mssge =  "data not updated";
+            }
+            cn.close();
+        } catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		return mssge;
+    }
+}

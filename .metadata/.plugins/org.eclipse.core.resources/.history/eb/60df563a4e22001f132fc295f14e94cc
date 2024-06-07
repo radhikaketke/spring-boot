@@ -1,0 +1,9 @@
+package com.shop.service;
+
+import com.shop.shopDto.ShopDto;
+import com.shop.shopEntity.Shop;
+
+public interface ShopService {
+
+	 public Shop saveShop(ShopDto shopDto);
+}

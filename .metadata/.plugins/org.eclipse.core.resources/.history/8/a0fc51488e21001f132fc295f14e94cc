@@ -1,0 +1,13 @@
+package com.shop.shopDto;
+
+import lombok.Data;
+
+@Data
+public class ShopDto {
+
+	private String name;
+	private String address;
+	private int phoneNo;
+	
+	
+}

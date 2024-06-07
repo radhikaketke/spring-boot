@@ -1,0 +1,21 @@
+package com.example.demo.calculator;
+
+
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
+import com.example.demo.Calculator.Calculator;
+
+public class CalculatorTest {
+
+    private Calculator calculator;
+    
+    @Test
+    public void addTwoNumbersTest() {
+        int result = calculator.addTwoNumbers(10, 20);
+        assertEquals(30, result);
+    }
+}
+

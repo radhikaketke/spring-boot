@@ -1,0 +1,63 @@
+package com.example.demo.service;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.demo.dto.UserDto;
+import com.example.demo.entity.User;
+import com.example.demo.repository.UserRepository;
+
+public class UserServiceTest {
+
+	 @Autowired
+	    private UserService userService;
+
+	    @Autowired
+	    private UserRepository userRepository;
+
+	    @Autowired
+	    private ModelMapper modelMapper;
+
+	    private User user;
+	    private UserDto userDto;
+
+	    @BeforeEach
+	    void setUp() {
+	        userRepository.deleteAll();  // Clear the repository before each test
+
+	        user = new User();
+	        user.setId(1);
+	        user.setName("John Doe");
+
+	        userDto = new UserDto();
+	        userDto.setName("John Doe");
+	    }
+
+	    @Test
+	    void testSaveUser() {
+	        User savedUser = userService.saveUser(userDto);
+
+	        assertEquals(userDto.getName(), savedUser.getName());
+
+	        // Verify the user is actually saved in the repository
+	        User foundUser = userRepository.findById(savedUser.getId()).orElse(null);
+	        assertEquals(savedUser, foundUser);
+	    }
+
+	    @Test
+	    void testGetUsers() {
+	        User savedUser = userRepository.save(user);
+
+	        List<User> users = userService.getUsers();
+
+	        assertEquals(1, users.size());
+	        assertEquals(savedUser.getName(), users.get(0).getName());
+	    }
+	
+}

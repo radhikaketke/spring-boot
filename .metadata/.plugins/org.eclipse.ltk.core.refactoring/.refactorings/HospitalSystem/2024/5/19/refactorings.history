@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 5 elements to &apos;jsp&apos;&#x0D;&#x0A;- Original project: &apos;HospitalSystem&apos;&#x0D;&#x0A;- Destination element: &apos;jsp&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     index.jsp&#x0D;&#x0A;     registeration.jsp&#x0D;&#x0A;     footer.jsp&#x0D;&#x0A;     login.jsp&#x0D;&#x0A;     navbar.jsp" description="Copy files" element1="src/main/webapp/WEB-INF/jsp/index.jsp" element2="src/main/webapp/WEB-INF/jsp/registeration.jsp" element3="src/main/webapp/WEB-INF/jsp/footer.jsp" element4="src/main/webapp/WEB-INF/jsp/login.jsp" element5="src/main/webapp/WEB-INF/jsp/navbar.jsp" files="5" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1715077175449" target="/hms/src/main/webapp/WEB-INF/jsp" units="0" version="1.0"/>
+</session>
